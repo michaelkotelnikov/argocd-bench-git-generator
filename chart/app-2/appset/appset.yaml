@@ -18,7 +18,7 @@ spec:
       source:
         repoURL: https://github.com/michaelkotelnikov/argocd-bench-git-generator.git
         targetRevision: master
-        path: 'values/{{path.basename}}/values.yaml'
+        path: chart/app-2/
         helm:
           valueFiles:
           - 'values/{{path.basename}}/values.yaml'
