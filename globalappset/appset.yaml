@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: global-applicationset
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/michaelkotelnikov/argocd-bench-git-generator.git
+      revision: master
+      directories:
+      - path: chart/*
+  template:
+    metadata:
+      name: '{{path.basename}}-applicationset'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/michaelkotelnikov/argocd-bench-git-generator.git
+        targetRevision: master
+        path: chart/{{path.basename}}/appset
+      destination:
+        name: 'in-cluster'
+        namespace: argocd
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
