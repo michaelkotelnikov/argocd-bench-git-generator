@@ -1,0 +1,8 @@
+apiVersion: v4
+data:
+  application.html: |
+    {{ .Values.application.content }}
+kind: ConfigMap
+metadata:
+  name: application-prod
+  namespace: {{ .Values.namespace }}
