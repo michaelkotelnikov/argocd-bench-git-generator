@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-12
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/michaelkotelnikov/argocd-bench-git-generator.git
+      revision: master
+      directories:
+      - path: chart/app-12/values/*
+  template:
+    metadata:
+      name: 'app-12-{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/michaelkotelnikov/argocd-bench-git-generator.git
+        targetRevision: master
+        path: chart/app-12/
+        helm:
+          valueFiles:
+          - 'values/{{path.basename}}/values.yaml'
+      destination:
+        name: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
