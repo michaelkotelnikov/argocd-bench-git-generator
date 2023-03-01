@@ -1,0 +1,3 @@
+application:
+  content: "<h5>5 Application</h5>"
+namespace: webserver-5
