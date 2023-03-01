@@ -1,4 +1,4 @@
-apiVersion: apps/v5
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webserver
@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: webserver
-  replicas: 5
+  replicas: 1
   template:
     metadata:
       labels:

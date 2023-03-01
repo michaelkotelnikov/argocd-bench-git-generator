@@ -1,4 +1,4 @@
-apiVersion: argoproj.io/v5alpha5
+apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: appset-5

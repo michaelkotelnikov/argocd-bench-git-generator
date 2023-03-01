@@ -1,3 +1,3 @@
 application:
-  content: "<h4>4 Application</h4>"
+  content: "<h1>4 Application</h1>"
 namespace: webserver-4
